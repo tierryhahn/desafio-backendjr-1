@@ -8,11 +8,23 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
 
-            <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="csv">
-                <input type="submit" value="submit">
-            </form>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="csv">
+            <input type="submit" value="Enviar">
+        </form>
 
         </div>
     </body>
